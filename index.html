@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monogram Install Center - Technical Specifications</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Monogram Install Center</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -18,85 +14,39 @@
         }
 
 ```
-    :root {
-        --bg-primary: #000000;
-        --bg-secondary: #0a0a0a;
-        --bg-card: #141414;
-        --accent-primary: #c9a961;
-        --accent-secondary: #b8941e;
-        --accent-tertiary: #d4af37;
-        --text-primary: #ffffff;
-        --text-secondary: #a0a0a0;
-        --text-muted: #6a6a6a;
-        --border-color: rgba(201, 169, 97, 0.15);
-        --glow-primary: rgba(201, 169, 97, 0.4);
-        --glow-secondary: rgba(212, 175, 55, 0.3);
-    }
-
     body {
-        font-family: 'Inter', sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #000;
+        color: #fff;
         min-height: 100vh;
-        overflow-x: hidden;
-        position: relative;
     }
 
-    body::before {
-        content: '';
+    .bg-gradient {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 20%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 60%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(184, 148, 30, 0.04) 0%, transparent 50%);
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 60%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
         pointer-events: none;
-        z-index: 0;
     }
 
-    .animated-grid {
+    .grid-bg {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: 
-            linear-gradient(rgba(201, 169, 97, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(201, 169, 97, 0.03) 1px, transparent 1px);
+        inset: 0;
+        background-image: linear-gradient(rgba(201, 169, 97, 0.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(201, 169, 97, 0.03) 1px, transparent 1px);
         background-size: 60px 60px;
-        pointer-events: none;
-        z-index: 0;
         opacity: 0.5;
-    }
-
-    .app-container {
-        position: relative;
-        z-index: 1;
+        pointer-events: none;
     }
 
     .header {
         background: rgba(10, 10, 10, 0.8);
-        backdrop-filter: blur(30px) saturate(180%);
-        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(30px);
+        border-bottom: 1px solid rgba(201, 169, 97, 0.15);
         padding: 1.25rem 2rem;
         position: sticky;
         top: 0;
         z-index: 100;
-        animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes slideDown {
-        from {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
     }
 
     .header-content {
@@ -108,128 +58,80 @@
     }
 
     .logo {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        cursor: pointer;
     }
 
-    .logo-image {
+    .logo img {
         height: 40px;
-        width: auto;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .logo-text {
-        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #c9a961, #b8941e, #d4af37);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .logo:hover .logo-image {
-        transform: scale(1.05);
     }
 
     .header-actions {
         display: flex;
         gap: 0.75rem;
-        align-items: center;
     }
 
-    .theme-toggle, .user-btn {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
+    .btn {
+        background: #141414;
+        border: 1px solid rgba(201, 169, 97, 0.15);
+        color: #fff;
         padding: 0.5rem 1rem;
         border-radius: 12px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         display: flex;
         align-items: center;
         gap: 0.5rem;
         font-size: 0.875rem;
-        font-weight: 500;
-        position: relative;
-        overflow: hidden;
+        transition: all 0.3s;
     }
 
-    .theme-toggle::before, .user-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .theme-toggle:hover::before, .user-btn:hover::before {
-        opacity: 0.1;
-    }
-
-    .theme-toggle:hover, .user-btn:hover {
-        border-color: var(--accent-primary);
+    .btn:hover {
+        border-color: #c9a961;
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(201, 169, 97, 0.2);
     }
 
-    .main-content {
+    .main {
         max-width: 1400px;
         margin: 0 auto;
         padding: 4rem 2rem;
+        position: relative;
+        z-index: 1;
     }
 
     .hero {
         text-align: center;
         margin-bottom: 4rem;
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            transform: translateY(40px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
     }
 
     .hero h1 {
-        font-family: 'Space Grotesk', sans-serif;
         font-size: 4rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
         letter-spacing: -2px;
-        line-height: 1.1;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
     }
 
     .hero p {
-        color: var(--text-secondary);
+        color: #a0a0a0;
         font-size: 1.125rem;
         max-width: 600px;
         margin: 0 auto;
-        font-weight: 400;
-        line-height: 1.6;
     }
 
     .search-section {
         margin-bottom: 3rem;
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
     }
 
-    .search-container {
+    .search-box {
         position: relative;
         max-width: 700px;
         margin: 0 auto;
@@ -238,24 +140,17 @@
     .search-input {
         width: 100%;
         padding: 1.25rem 3.5rem 1.25rem 1.5rem;
-        background: var(--bg-card);
-        border: 2px solid var(--border-color);
+        background: #141414;
+        border: 2px solid rgba(201, 169, 97, 0.15);
         border-radius: 16px;
-        color: var(--text-primary);
+        color: #fff;
         font-size: 1rem;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        font-family: 'Inter', sans-serif;
     }
 
     .search-input:focus {
         outline: none;
-        border-color: var(--accent-primary);
-        box-shadow: 0 0 0 4px rgba(201, 169, 97, 0.1), 0 10px 40px rgba(201, 169, 97, 0.15);
-        background: var(--bg-secondary);
-    }
-
-    .search-input::placeholder {
-        color: var(--text-muted);
+        border-color: #c9a961;
+        box-shadow: 0 0 0 4px rgba(201, 169, 97, 0.1);
     }
 
     .search-icon {
@@ -263,12 +158,7 @@
         right: 1.25rem;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--text-muted);
-        transition: all 0.3s ease;
-    }
-
-    .search-input:focus ~ .search-icon {
-        color: var(--accent-primary);
+        color: #6a6a6a;
     }
 
     .filters {
@@ -281,135 +171,67 @@
 
     .filter-btn {
         padding: 0.625rem 1.25rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
+        background: #141414;
+        border: 1px solid rgba(201, 169, 97, 0.15);
         border-radius: 12px;
-        color: var(--text-secondary);
+        color: #a0a0a0;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         font-size: 0.875rem;
         font-weight: 600;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .filter-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .filter-btn:hover::before {
-        opacity: 0.1;
+        transition: all 0.3s;
     }
 
     .filter-btn:hover {
-        border-color: var(--accent-primary);
-        color: var(--text-primary);
-        transform: translateY(-2px);
+        border-color: #c9a961;
+        color: #fff;
     }
 
     .filter-btn.active {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: #000000;
+        background: linear-gradient(135deg, #c9a961, #b8941e);
+        color: #000;
         border-color: transparent;
-        box-shadow: 0 8px 24px var(--glow-primary);
-    }
-
-    .filter-btn.active::before {
-        opacity: 1;
     }
 
     .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         gap: 1.5rem;
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
     }
 
     .product-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
+        background: #141414;
+        border: 1px solid rgba(201, 169, 97, 0.15);
         border-radius: 20px;
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.4s;
         position: relative;
     }
 
-    .product-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: 0;
-    }
-
-    .product-card:hover::before {
-        opacity: 0.05;
-    }
-
     .product-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        border-color: var(--accent-primary);
-        box-shadow: 0 20px 60px rgba(201, 169, 97, 0.2), 0 0 0 1px rgba(201, 169, 97, 0.1);
+        transform: translateY(-8px);
+        border-color: #c9a961;
+        box-shadow: 0 20px 60px rgba(201, 169, 97, 0.2);
     }
 
     .product-image {
         height: 220px;
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        background: linear-gradient(135deg, #0a0a0a, #000);
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .product-image::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .product-card:hover .product-image::after {
-        opacity: 1;
     }
 
     .product-icon {
-        color: var(--accent-primary);
-        position: relative;
-        z-index: 2;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .product-card:hover .product-icon {
-        transform: scale(1.1) rotate(5deg);
-        filter: drop-shadow(0 0 20px var(--glow-primary));
+        color: #c9a961;
     }
 
     .product-content {
         padding: 1.5rem;
-        position: relative;
-        z-index: 1;
     }
 
     .product-category {
-        color: var(--accent-primary);
+        color: #c9a961;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 1.5px;
@@ -418,16 +240,13 @@
     }
 
     .product-title {
-        font-family: 'Space Grotesk', sans-serif;
         font-size: 1.375rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        color: var(--text-primary);
-        letter-spacing: -0.5px;
     }
 
     .product-sku {
-        color: var(--text-muted);
+        color: #6a6a6a;
         font-size: 0.875rem;
         margin-bottom: 1.25rem;
         font-family: monospace;
@@ -444,142 +263,98 @@
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        color: var(--text-secondary);
+        color: #a0a0a0;
         font-size: 0.875rem;
         padding: 0.375rem 0.75rem;
-        background: var(--bg-secondary);
+        background: #0a0a0a;
         border-radius: 8px;
-        border: 1px solid var(--border-color);
+        border: 1px solid rgba(201, 169, 97, 0.15);
     }
 
     .product-actions {
         display: flex;
         gap: 0.5rem;
         padding-top: 1.25rem;
-        border-top: 1px solid var(--border-color);
+        border-top: 1px solid rgba(201, 169, 97, 0.15);
     }
 
     .action-btn {
         flex: 1;
         padding: 0.75rem;
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
+        background: #0a0a0a;
+        border: 1px solid rgba(201, 169, 97, 0.15);
         border-radius: 12px;
-        color: var(--text-secondary);
+        color: #a0a0a0;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.3s;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .action-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .action-btn:hover::before {
-        opacity: 0.15;
     }
 
     .action-btn:hover {
-        color: var(--text-primary);
-        border-color: var(--accent-primary);
+        color: #fff;
+        border-color: #c9a961;
         transform: translateY(-2px);
     }
 
     .modal-overlay {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(10, 10, 15, 0.9);
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
         backdrop-filter: blur(20px);
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         z-index: 1000;
         padding: 2rem;
-        animation: fadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    .modal-overlay.active {
+        display: flex;
     }
 
     .modal {
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
+        background: #141414;
+        border: 1px solid rgba(201, 169, 97, 0.15);
         border-radius: 24px;
         max-width: 900px;
         width: 100%;
         max-height: 90vh;
         overflow-y: auto;
         position: relative;
-        animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(201, 169, 97, 0.1);
-    }
-
-    @keyframes modalSlideUp {
-        from {
-            transform: translateY(60px) scale(0.95);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
     }
 
     .modal-header {
         padding: 2rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid rgba(201, 169, 97, 0.15);
         position: sticky;
         top: 0;
-        background: var(--bg-card);
-        backdrop-filter: blur(20px);
-        z-index: 10;
+        background: #141414;
     }
 
     .modal-close {
         position: absolute;
         top: 1.5rem;
         right: 1.5rem;
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-        color: var(--text-secondary);
+        background: #0a0a0a;
+        border: 1px solid rgba(201, 169, 97, 0.15);
+        color: #a0a0a0;
         cursor: pointer;
         padding: 0.5rem;
         border-radius: 12px;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        transition: all 0.3s;
     }
 
     .modal-close:hover {
-        background: var(--bg-primary);
-        color: var(--text-primary);
-        border-color: var(--accent-primary);
-        transform: rotate(90deg);
+        color: #fff;
+        border-color: #c9a961;
     }
 
     .modal-title {
-        font-family: 'Space Grotesk', sans-serif;
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        letter-spacing: -1px;
     }
 
     .modal-body {
@@ -591,12 +366,10 @@
     }
 
     .spec-section h3 {
-        font-family: 'Space Grotesk', sans-serif;
         font-size: 1.25rem;
-        color: var(--accent-primary);
+        color: #c9a961;
         margin-bottom: 1rem;
         font-weight: 600;
-        letter-spacing: -0.5px;
     }
 
     .spec-grid {
@@ -606,102 +379,67 @@
     }
 
     .spec-detail {
-        background: var(--bg-secondary);
+        background: #0a0a0a;
         padding: 1.25rem;
         border-radius: 12px;
-        border: 1px solid var(--border-color);
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .spec-detail::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-    }
-
-    .spec-detail:hover {
-        border-color: var(--accent-primary);
-        transform: translateY(-2px);
+        border: 1px solid rgba(201, 169, 97, 0.15);
+        border-left: 3px solid #c9a961;
     }
 
     .spec-label {
-        color: var(--text-muted);
+        color: #6a6a6a;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 0.5rem;
-        font-weight: 600;
     }
 
     .spec-value {
-        color: var(--text-primary);
+        color: #fff;
         font-size: 1.125rem;
         font-weight: 600;
     }
 
     .download-section {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, #c9a961, #b8941e);
         padding: 2rem;
         border-radius: 16px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .download-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
-        opacity: 0.3;
     }
 
     .download-btn {
         width: 100%;
         padding: 1.125rem;
-        background: #000000;
-        color: var(--accent-primary);
-        border: 2px solid var(--accent-primary);
+        background: #000;
+        color: #c9a961;
+        border: 2px solid #c9a961;
         border-radius: 12px;
         font-size: 1rem;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.3s;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        position: relative;
-        z-index: 1;
     }
 
     .download-btn:hover {
-        background: var(--accent-primary);
-        color: #000000;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+        background: #c9a961;
+        color: #000;
     }
 
     .offline-badge {
         position: absolute;
         top: 1rem;
         right: 1rem;
-        background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-secondary));
-        color: #000000;
+        background: linear-gradient(135deg, #d4af37, #b8941e);
+        color: #000;
         padding: 0.375rem 0.875rem;
         border-radius: 8px;
         font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
         z-index: 3;
     }
 
@@ -709,84 +447,74 @@
         .hero h1 {
             font-size: 2.5rem;
         }
-        
         .products-grid {
             grid-template-columns: 1fr;
         }
-
         .header-content {
             flex-direction: column;
             gap: 1rem;
         }
-
-        .modal {
-            margin: 1rem;
-            border-radius: 16px;
-        }
-    }
-
-    .light-mode {
-        --bg-primary: #ffffff;
-        --bg-secondary: #fafafa;
-        --bg-card: #ffffff;
-        --accent-primary: #c9a961;
-        --accent-secondary: #b8941e;
-        --accent-tertiary: #d4af37;
-        --text-primary: #000000;
-        --text-secondary: #4a4a4a;
-        --text-muted: #8a8a8a;
-        --border-color: rgba(201, 169, 97, 0.2);
-        --glow-primary: rgba(201, 169, 97, 0.3);
-        --glow-secondary: rgba(212, 175, 55, 0.2);
-    }
-
-    .light-mode body {
-        background: linear-gradient(135deg, #fafafa 0%, #ffffff 50%, #f5f5f5 100%);
-    }
-
-    .light-mode body::before {
-        background: 
-            radial-gradient(circle at 20% 20%, rgba(201, 169, 97, 0.04) 0%, transparent 50%),
-            radial-gradient(circle at 80% 60%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
-    }
-
-    .light-mode .animated-grid {
-        background-image: 
-            linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    }
-
-    .light-mode .modal {
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(201, 169, 97, 0.1);
-    }
-
-    .light-mode .logo-image {
-        filter: invert(1) brightness(0.3);
     }
 </style>
 ```
 
 </head>
 <body>
-    <div class="animated-grid"></div>
-    <div id="root"></div>
+    <div class="bg-gradient"></div>
+    <div class="grid-bg"></div>
 
 ```
-<script type="text/babel">
-    const { useState, useEffect } = React;
-    const { 
-        Search, Download, Bookmark, Share2, X, 
-        Ruler, Zap, Droplet, FileText, ChefHat,
-        Refrigerator, Wind, Flame, Moon, Sun
-    } = lucide;
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="https://www.geappliances.com/content/dam/geappliances/images/rebrand-q2-2024/rebrand-logos/monogram-logo-white.svg" alt="Monogram">
+            <span class="logo-text">Install Center</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn">Sign In</button>
+        </div>
+    </div>
+</header>
 
-    const sampleProducts = [
+<main class="main">
+    <div class="hero">
+        <h1>Professional Specs<br>Redefined</h1>
+        <p>Access comprehensive installation guides and technical specifications for the complete GE Monogram appliance collection</p>
+    </div>
+
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search by product name, SKU, or category...">
+            <i data-lucide="search" class="search-icon"></i>
+        </div>
+        <div class="filters" id="filters"></div>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <button class="modal-close" id="modalClose">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="product-category" id="modalCategory"></div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="product-sku" id="modalSku"></div>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    const products = [
         {
             id: 1,
             name: "Built-In Refrigerator",
             category: "Refrigeration",
             sku: "ZIK360NHLH",
-            icon: Refrigerator,
+            icon: "refrigerator",
             dimensions: "84\" H x 36\" W x 24\" D",
             cutout: "84.5\" H x 36.25\" W",
             utilities: "120V, 15A",
@@ -798,7 +526,7 @@
             name: "Dual-Fuel Range",
             category: "Cooking",
             sku: "ZDP486NDPSS",
-            icon: Flame,
+            icon: "flame",
             dimensions: "36\" H x 48\" W x 28\" D",
             cutout: "36.25\" W x 28.5\" D",
             utilities: "240V, Gas",
@@ -810,7 +538,7 @@
             name: "Wall Oven",
             category: "Cooking",
             sku: "ZET9050SHSS",
-            icon: ChefHat,
+            icon: "chef-hat",
             dimensions: "29\" H x 30\" W x 25\" D",
             cutout: "28.75\" H x 29.75\" W",
             utilities: "240V, 30A",
@@ -822,7 +550,7 @@
             name: "Ventilation Hood",
             category: "Ventilation",
             sku: "ZV48NSDSS",
-            icon: Wind,
+            icon: "wind",
             dimensions: "13\" H x 48\" W x 21\" D",
             cutout: "48\" W x 21\" D",
             utilities: "120V, 15A",
@@ -834,7 +562,7 @@
             name: "Dishwasher",
             category: "Dishwashing",
             sku: "ZDT985SPNSS",
-            icon: Droplet,
+            icon: "droplet",
             dimensions: "34\" H x 24\" W x 24\" D",
             cutout: "34\" H x 24\" W",
             utilities: "120V, 15A",
@@ -846,7 +574,7 @@
             name: "Wine Reserve",
             category: "Refrigeration",
             sku: "ZDW24CSPSS",
-            icon: Refrigerator,
+            icon: "wine",
             dimensions: "34\" H x 24\" W x 24\" D",
             cutout: "34\" H x 24\" W",
             utilities: "120V, 15A",
@@ -856,13 +584,153 @@
     ];
 
     const categories = ["All", "Refrigeration", "Cooking", "Dishwashing", "Ventilation"];
+    let selectedCategory = "All";
+    let searchQuery = "";
 
-    function App() {
-        const [searchQuery, setSearchQuery] = useState("");
-        const [selectedCategory, setSelectedCategory] = useState("All");
-        const [selectedProduct, setSelectedProduct] = useState(null);
-        const [isDarkMode, setIsDarkMode] = useState(true);
+    function renderFilters() {
+        const filtersEl = document.getElementById('filters');
+        filtersEl.innerHTML = categories.map(cat => 
+            `<button class="filter-btn ${cat === selectedCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>`
+        ).join('');
+    }
 
-        useEffect(() => {
-            if (!isDarkMode) {
-                document.body.classList.add('light-mode');
+    function setCategory(cat) {
+        selectedCategory = cat;
+        renderFilters();
+        renderProducts();
+    }
+
+    function renderProducts() {
+        const filtered = products.filter(p => {
+            const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                p.sku.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+            return matchesSearch && matchesCategory;
+        });
+
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = filtered.map(p => `
+            <div class="product-card" onclick="openModal(${p.id})">
+                ${p.offline ? '<div class="offline-badge">Offline</div>' : ''}
+                <div class="product-image">
+                    <i data-lucide="${p.icon}" class="product-icon" style="width:72px;height:72px"></i>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">${p.category}</div>
+                    <h3 class="product-title">${p.name}</h3>
+                    <div class="product-sku">${p.sku}</div>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <i data-lucide="ruler" style="width:14px;height:14px"></i>
+                            ${p.dimensions.split('x')[0]}
+                        </div>
+                        <div class="spec-item">
+                            <i data-lucide="zap" style="width:14px;height:14px"></i>
+                            ${p.utilities.split(',')[0]}
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn" onclick="event.stopPropagation(); handleDownload(${p.id})">
+                            <i data-lucide="download" style="width:16px;height:16px"></i>
+                        </button>
+                        <button class="action-btn" onclick="event.stopPropagation(); handleBookmark(${p.id})">
+                            <i data-lucide="bookmark" style="width:16px;height:16px"></i>
+                        </button>
+                        <button class="action-btn" onclick="event.stopPropagation(); handleShare(${p.id})">
+                            <i data-lucide="share-2" style="width:16px;height:16px"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        lucide.createIcons();
+    }
+
+    function openModal(id) {
+        const p = products.find(prod => prod.id === id);
+        document.getElementById('modalCategory').textContent = p.category;
+        document.getElementById('modalTitle').textContent = p.name;
+        document.getElementById('modalSku').textContent = p.sku;
+        document.getElementById('modalBody').innerHTML = `
+            <div class="spec-section">
+                <h3>Dimensions</h3>
+                <div class="spec-grid">
+                    <div class="spec-detail">
+                        <div class="spec-label">Product Dimensions</div>
+                        <div class="spec-value">${p.dimensions}</div>
+                    </div>
+                    <div class="spec-detail">
+                        <div class="spec-label">Cutout Required</div>
+                        <div class="spec-value">${p.cutout}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="spec-section">
+                <h3>Utilities & Requirements</h3>
+                <div class="spec-grid">
+                    <div class="spec-detail">
+                        <div class="spec-label">Electrical</div>
+                        <div class="spec-value">${p.utilities}</div>
+                    </div>
+                    <div class="spec-detail">
+                        <div class="spec-label">Clearance</div>
+                        <div class="spec-value">2" minimum</div>
+                    </div>
+                </div>
+            </div>
+            <div class="spec-section">
+                <h3>Key Features</h3>
+                <div class="spec-grid">
+                    ${p.features.map(f => `<div class="spec-detail"><div class="spec-value">${f}</div></div>`).join('')}
+                </div>
+            </div>
+            <div class="spec-section">
+                <div class="download-section">
+                    <button class="download-btn" onclick="handleDownload(${p.id})">
+                        <i data-lucide="download" style="width:20px;height:20px"></i>
+                        Download Spec Sheet
+                    </button>
+                </div>
+            </div>
+        `;
+        document.getElementById('modalOverlay').classList.add('active');
+        lucide.createIcons();
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    function handleDownload(id) {
+        const p = products.find(prod => prod.id === id);
+        alert(`Downloading spec sheet for ${p.name} (${p.sku})`);
+    }
+
+    function handleBookmark(id) {
+        const p = products.find(prod => prod.id === id);
+        alert(`Bookmarked ${p.name}`);
+    }
+
+    function handleShare(id) {
+        const p = products.find(prod => prod.id === id);
+        alert(`Share link copied for ${p.name}`);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderProducts();
+    });
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+        if (e.target.id === 'modalOverlay') closeModal();
+    });
+
+    renderFilters();
+    renderProducts();
+    lucide.createIcons();
+</script>
+```
+
+</body>
+</html>
